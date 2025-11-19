@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Spawner), typeof(Input), typeof(Exploder))]
+[RequireComponent(typeof(Spawner), typeof(Raycaster), typeof(Exploder))]
 public class Divider : MonoBehaviour
 {
     private const float NextScaleFactor = 0.5f;
@@ -10,25 +10,25 @@ public class Divider : MonoBehaviour
     [SerializeField] private int _offspringsMinNumber = 2;
     [SerializeField] private int _offspringsMaxNumber = 6;
 
-    private Input _input;
     private Spawner _spawner;
     private Exploder _exploder;
+    private Raycaster _raycaster;
 
     private void Awake()
     {
+        _raycaster = GetComponent<Raycaster>();
         _spawner = GetComponent<Spawner>();
-        _input = GetComponent<Input>();
         _exploder = GetComponent<Exploder>();
     }
 
     private void OnEnable()
     {
-        _input.Selected += OnSelect;
+        _raycaster.Selected += OnSelect;
     }
 
     private void OnDisable()
     {
-        _input.Selected -= OnSelect;
+        _raycaster.Selected -= OnSelect;
     }
 
     private void OnSelect(Explosive selected)
