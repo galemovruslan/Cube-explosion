@@ -11,6 +11,7 @@ public class Explosive : MonoBehaviour, IDivideable
     public float Scale => transform.localScale.x;
     public Vector3 Position => transform.position;
     public float DivisionChance { get => _divisionChance; }
+    public Rigidbody Rigidbody { get => _rigidbody; }
 
     private void Awake()
     {
@@ -18,23 +19,10 @@ public class Explosive : MonoBehaviour, IDivideable
         _meshRenderer = GetComponent<MeshRenderer>();
     }
 
-    public void SetColor(Color color)
+    public void Initialize(Color color, float scale, float chance)
     {
         _meshRenderer.material.color = color;
-    }
-
-    public void SetScale(float scale)
-    {
         transform.localScale = Vector3.one * scale;
-    }
-
-    public void RecieveExplosion(float force, Vector3 position, float radius, float upwardModifier)
-    {
-        _rigidbody.AddExplosionForce(force, position, radius, upwardModifier);
-    }
-
-    public void SetChance(float chance)
-    {
         _divisionChance = chance;
     }
 }

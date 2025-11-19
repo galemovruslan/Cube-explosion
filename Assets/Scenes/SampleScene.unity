@@ -509,8 +509,9 @@ GameObject:
   - component: {fileID: 1137313505}
   - component: {fileID: 1137313504}
   - component: {fileID: 1137313503}
-  - component: {fileID: 1137313502}
   - component: {fileID: 1137313506}
+  - component: {fileID: 1137313508}
+  - component: {fileID: 1137313507}
   m_Layer: 0
   m_Name: GameLogic
   m_TagString: Untagged
@@ -518,21 +519,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1137313502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1137313501}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 434053c7fe0709c46bbb9bc3daf40977, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectables:
-    serializedVersion: 2
-    m_Bits: 128
 --- !u!114 &1137313503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c3cdeddbc22b134baa37050492210d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6841662825568966231, guid: 8424f8ca7a09fed42912e3b62cdcb17f, type: 3}
+  _prefab: {fileID: 6836926122159525462, guid: 8424f8ca7a09fed42912e3b62cdcb17f, type: 3}
   _parent: {fileID: 1936432}
   _initialSpawnedNumber: 4
   _initialSpawnRange: 30
@@ -594,6 +580,34 @@ MonoBehaviour:
   _forceFactor: 1000
   _radiusFactor: 0
   _upwardModifier: 60
+--- !u!114 &1137313507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137313501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834ead51ec9169647bef1ce09e10e291, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1137313508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1137313501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a78f3362d752da41bf492ae21ee35b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _range: 1000
+  _selectables:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1487935934
 GameObject:
   m_ObjectHideFlags: 0
