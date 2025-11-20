@@ -50,7 +50,7 @@ public class Raycaster : MonoBehaviour
 
         foreach (var collider in colliders)
         {
-            if (collider.TryGetComponent<Explosive>(out var explosive))
+            if (collider.TryGetComponent(out Explosive explosive))
             {
                 affected.Add(explosive);
             }

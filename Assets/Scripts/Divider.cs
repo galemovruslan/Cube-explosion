@@ -33,7 +33,7 @@ public class Divider : MonoBehaviour
 
     private void OnSelect(Explosive selected)
     {
-        if (selected.TryGetComponent<IDivideable>(out var divideable))
+        if (selected.TryGetComponent<IDivideable>(out IDivideable divideable))
         {
             Vector3 position = selected.transform.position;
             float scale = selected.transform.localScale.x;
@@ -50,11 +50,11 @@ public class Divider : MonoBehaviour
             }
         }
 
-        _spawner.Destroy(selected);
+        selected.Destroy();
     }
 
     private bool ShouldDivide(IDivideable divideable)
     {
-        return Random.Range(0f, 1f) <= divideable.DivisionChance;
+        return Random.value <= divideable.DivisionChance;
     }
 }

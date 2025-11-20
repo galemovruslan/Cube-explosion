@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -13,6 +14,8 @@ public class Explosive : MonoBehaviour, IDivideable
     public float DivisionChance { get => _divisionChance; }
     public Rigidbody Rigidbody { get => _rigidbody; }
 
+    public event Action<Explosive> Destroied;
+
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -25,5 +28,10 @@ public class Explosive : MonoBehaviour, IDivideable
         transform.localScale = Vector3.one * scale;
         _divisionChance = chance;
         _rigidbody.mass = scale;
+    }
+
+    public void Destroy()
+    {
+        Destroied?.Invoke(this);
     }
 }

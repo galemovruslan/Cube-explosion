@@ -27,6 +27,7 @@ public class Spawner : MonoBehaviour
     {
         Explosive spawned = Instantiate(_prefab, _parent);
         spawned.transform.position = position;
+        spawned.Destroied += DestroyHandler;
         return spawned;
     }
 
@@ -53,8 +54,9 @@ public class Spawner : MonoBehaviour
         return offsprings;
     }
 
-    public void Destroy(Explosive explosive)
+    public void DestroyHandler(Explosive explosive)
     {
+        explosive.Destroied -= DestroyHandler;
         explosive.gameObject.SetActive(false);
         GameObject.Destroy(explosive.gameObject);
     }
