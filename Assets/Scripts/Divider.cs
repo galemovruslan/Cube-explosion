@@ -33,14 +33,21 @@ public class Divider : MonoBehaviour
 
     private void OnSelect(Explosive selected)
     {
-        if (selected.TryGetComponent<IDivideable>(out var divideable) && ShouldDivide(divideable))
+        if (selected.TryGetComponent<IDivideable>(out var divideable))
         {
             Vector3 position = selected.transform.position;
             float scale = selected.transform.localScale.x;
 
-            int offspringsNumber = Random.Range(_offspringsMinNumber, _offspringsMaxNumber + 1);
-            List<Explosive> offsprings = _spawner.SpawnOffsprings(selected, offspringsNumber, NextScaleFactor, NextChanceFactor);
-            _exploder.Explode(selected, offsprings);
+            if (ShouldDivide(divideable))
+            {
+                int offspringsNumber = Random.Range(_offspringsMinNumber, _offspringsMaxNumber + 1);
+                List<Explosive> offsprings = _spawner.SpawnOffsprings(selected, offspringsNumber, NextScaleFactor, NextChanceFactor);
+                _exploder.ExplodeOffsprings(selected, offsprings);
+            }
+            else
+            {
+                _exploder.ExplodeNear(selected);
+            }
         }
 
         _spawner.Destroy(selected);

@@ -24,5 +24,6 @@ public class Explosive : MonoBehaviour, IDivideable
         _meshRenderer.material.color = color;
         transform.localScale = Vector3.one * scale;
         _divisionChance = chance;
+        _rigidbody.mass = scale;
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Input))]
@@ -40,5 +41,21 @@ public class Raycaster : MonoBehaviour
                 Selected?.Invoke(explosive);
             }
         }
+    }
+
+    public List<Explosive> GetNear(Vector3 center, float radius)
+    {
+        Collider[] colliders = Physics.OverlapSphere(center, radius, _selectables);
+        List<Explosive> affected = new List<Explosive>();
+
+        foreach (var collider in colliders)
+        {
+            if (collider.TryGetComponent<Explosive>(out var explosive))
+            {
+                affected.Add(explosive);
+            }
+        }
+
+        return affected;
     }
 }
